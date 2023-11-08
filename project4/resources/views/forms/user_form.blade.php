@@ -8,8 +8,13 @@
 <body>
 <h3>Dane użytkownika:</h3>
 <form action="UserFormController" method="get">
-    <input type="text" name="fname" placeholder="Podaj imie" autofocus><br><br>
-    <input type="text" name="lname" placeholder="Podaj nazwisko"><br><br>
+
+    <input type="text" name="fname" placeholder="Podaj imie" autofocus value="{{old('fname')}}">
+
+    <input type="text" name="lname" placeholder="Podaj nazwisko" value="{{old('lname')}}">
+   
+    <input type="email" name="mail" placeholder="podaj email" value="{{old('mail')}}">
+    
     <input type="submit" value="zatwierdź dane">
 </form>
 </body>

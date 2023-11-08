@@ -12,10 +12,31 @@ class UserFormController extends Controller
         //return $req->path(); // UserFormController
         //return $req->url(); //adres https
         //return $req->method(); //GET
+
+        $req->validate([
+            "fname" => 'required | min:3 | max:20',
+            "lname" => 'required | min:3 | max: 20',
+            'mail' => 'required | email'
+        ],
+        [
+            'fname.required'=>'pole :attribute jest wymagane',
+            'fname.min'=>'pole :attribute musi mieć przynajmniej :min znaki',
+            'fname.max'=>'pole :attribute musi mieć maksymalnie :max znaków',
+
+            'lname.required'=>'pole :attribute jest wymagane',
+            'lname.min'=>'pole :attribute musi mieć przynajmniej :min znaki',
+            'lname.max'=>'pole :attribute musi mieć maksymalnie :max znaków',
+
+            'mail.required'=>'pole :attribute jest wymagane',
+            'mail.email'=>'pole :attribute musi być typu email'
+        ]);
+
         $data_user = [
             'fname'=>$req->input('fname'),
-            'lname'=>$req->input('lname')
+            'lname'=>$req->input('lname'),
+            'mail'=>$req->input('mail'),
         ];
+
         return view('user', ['user'=>$data_user]);  
     }
 }
